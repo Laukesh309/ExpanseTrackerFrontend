@@ -51,6 +51,29 @@
                 cursor: pointer;
                 
             }
+            .editContainer{
+                display: flex;
+                column-gap: 18px;
+                width: 100%;
+                button{
+                    flex: 1;
+                    border: none;
+                    text-decoration: none;
+                    padding: 10px 0px;
+                    color:white
+                }
+                .edit{
+                    background-color: dodgerblue;
+                }
+                .cancel{
+                    background-color: #cccc;
+                    color:black
+                }
+            }
+            .active{
+                background-color: #ccc;
+                pointer-events: none;
+            }
         }
        
         .expanseDetail{
@@ -68,8 +91,8 @@
 
        } 
     }
-    .contentContainer{
     
+    .contentContainer{
         .heading{
             display: flex;
             border: 1px solid #ccc;
@@ -96,9 +119,52 @@
                 padding: 10px;
                 border-bottom: 1px solid #ccc;
             }
+            .edit{
+                cursor: pointer;
+            }
+            .delete{
+                cursor: pointer;
+            }
 
 
         }
 
     }
+    .editActive{
+        pointer-events: none;
+        opacity: 0.5;
+    }
+    .loaderContainer{
+        position: fixed;
+        z-index: 999;
+        height: 100vh;
+        width: 100%;
+        top:0px;
+        left: 0px;
+        background:RGBA(128, 128, 128, 0.3);
+        .loader{
+            border:16px solid #f3f3f3;
+            border-top: 16px solid red;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            animation: spin 2s linear infinite;
+            background-color: #ccc;
+        }
+       
+      
+    }
+    
+   
 }
+@keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }

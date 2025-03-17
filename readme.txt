@@ -14,3 +14,17 @@ create .babelrc and paste its preset
 
 //for css and style loader 
  npm install css-loader style-loader
+
+ // install redux-toolkit
+
+ // to connect with react and redux install npm install react-redux
+
+
+ // step to integration ReduxToolKitQuery  with React ;
+
+ 1. First install redux-toolkit
+ 2. import createApi and fetchBaseQuery from "import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";" make sure  you are import with right full path . becouse error arise if you will not fetch with proper path
+
+3. read this doc to setUp Api reducere https://redux-toolkit.js.org/tutorials/rtk-query
+4. create store and add all reducere with configure store and add middleware 
+5. Import Provide from react-redux and pass store into it
