@@ -78,6 +78,7 @@ export default function Detail() {
                     transactionType: item.transactionType,
                     owner: "PrinceYadav",
                     isEditEnable: true,
+                    itemId: item.id,
                   })
                 );
               }}

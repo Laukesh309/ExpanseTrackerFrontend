@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import {
   useAddExpanseTrackerDataMutation,
   useGetExpanseTrackerDataQuery,
+  useEditExpanseTrackerByIdMutation,
 } from "../Redux/Api";
 import { updateExpanseTrackerData } from "../Redux/reducer/expanseTrackerReducer";
 import { useSelector, useDispatch } from "react-redux";
 
 export default function header() {
   const [addExpanseData, { isLoading }] = useAddExpanseTrackerDataMutation();
+  const [editExpanseData] = useEditExpanseTrackerByIdMutation();
   const currentExpanseData = useSelector(
     (state) => state.expanseTrackerManager
   );
@@ -30,12 +32,46 @@ export default function header() {
     };
     addExpanseData(userInfoPayload)
       .then((data) => {
-        setName("");
-        setDescription("");
-        setPrice("");
-        setTransactionType("contribution");
-        setIsEdited(false);
+        dispatch(
+          updateExpanseTrackerData({
+            name: "",
+            description: "",
+            price: "",
+            transactionType: "",
+            owner: "PrinceYadav",
+            isEditEnable: false,
+            itemId: "",
+          })
+        );
         console.log("data added successfully", data);
+      })
+      .catch((error) => {
+        console.log("\n\n\n this is error ", error);
+      });
+  }
+  function handleForEdit() {
+    let expanseId = currentExpanseData.itemId;
+    let editUserPayLoad = {
+      name,
+      description,
+      price,
+      transactionType,
+      owner,
+      id: expanseId,
+    };
+    editExpanseData({ expanseId, editUserPayLoad })
+      .then((data) => {
+        dispatch(
+          updateExpanseTrackerData({
+            name: "",
+            description: "",
+            price: "",
+            transactionType: "",
+            owner: "PrinceYadav",
+            isEditEnable: false,
+            itemId: "",
+          })
+        );
       })
       .catch((error) => {
         console.log("\n\n\n this is error ");
@@ -115,7 +151,7 @@ export default function header() {
                 <button
                   className="edit"
                   onClick={() => {
-                    // handleForEdit();
+                    handleForEdit();
                   }}
                 >
                   Edit

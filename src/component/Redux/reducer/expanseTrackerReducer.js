@@ -7,6 +7,7 @@ const initialState = {
   transactionType: "contribution",
   owner: "PrinceYadav",
   isEditEnable: false,
+  itemId: "",
 };
 const expanseTrackerSlice = createSlice({
   name: "expansetracker",

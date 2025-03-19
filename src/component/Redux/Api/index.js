@@ -28,6 +28,14 @@ export const expanseTrackerApi = createApi({
       }),
       invalidatesTags: ["GetExpanseData"],
     }),
+    editExpanseTrackerById: builder.mutation({
+      query: ({ expanseId, editUserPayLoad }) => ({
+        url: `/updateExpanseItemById/${expanseId}`,
+        method: "Put",
+        body: editUserPayLoad,
+      }),
+      invalidatesTags: ["GetExpanseData"],
+    }),
   }),
 });
 
@@ -35,4 +43,5 @@ export const {
   useGetExpanseTrackerDataQuery,
   useAddExpanseTrackerDataMutation,
   useDeleteExpanseTrackerByIdMutation,
+  useEditExpanseTrackerByIdMutation,
 } = expanseTrackerApi;
